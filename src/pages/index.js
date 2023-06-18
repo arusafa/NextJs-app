@@ -63,19 +63,14 @@ export default function Home() {
             </div>
           </Link>
 
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="/learn/react">
             <h2>
-              Learn <span>-&gt;</span>
+              Learn ReactJs <span>-&gt;</span>
             </h2>
             <p>
               Learn about Next.js in an interactive course with&nbsp;quizzes!
             </p>
-          </a>
+          </Link>
 
           <a
             href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
