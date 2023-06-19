@@ -1,9 +1,19 @@
+import { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [query, getQuery] = useState();
+  const router = useRouter();
+  const handleOnChange = (e) => getQuery(e.target.value);
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/news/${query}`);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,43 +23,25 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to my Elearning site</h1>
+        <h1 className={styles.title}>News Feed</h1>
 
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <form onSubmit={handleOnSubmit}>
+          <input type="text" onChange={handleOnChange} />
+        </form>
 
         <div className={styles.grid}>
-          <Link href="/learn/next">
-            <h2>Learn NextJS &rarr;</h2>
-          </Link>
-
-          <Link href="/learn/react">
-            <h2>Learn React &rarr;</h2>
-          </Link>
-
-          <Link href="/learn/angular">
-            <h2>Learn Angular &rarr;</h2>
-          </Link>
-
-          <Link href="/learn/vue">
-            <h2>Learn Vue &rarr;</h2>
+          <Link href="/news/">
+            <h2>Top Stories &rarr;</h2>
+            <p>Read articles currently on the homepage</p>
           </Link>
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+        Powered by{" "}
+        <span className={styles.logo}>
+          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+        </span>
       </footer>
     </div>
   );
